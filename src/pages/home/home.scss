@@ -1,0 +1,33 @@
+.home-box{
+    display:flex;
+    flex-direction: column;
+    .home-header{
+        height:50px;
+        background-color: #ddd;
+        .home-nav{
+            height:50px;
+            background-color: #ccc;
+        }
+    }
+    .home-body{
+        display:flex;
+        flex-direction: row;
+        padding:0.5rem 1rem;
+        background-color: #eee;
+        .home-container{
+            height:1000px;
+            flex:4;
+            background-color: skyblue;
+        }
+        .home-aside{
+            height:500px;
+            margin-left:10px;
+            flex:1;            
+            background-color: grey;        
+        }
+    }
+    .home-footer{
+        height:50px;
+        background-color: #ddd;
+    }    
+}
