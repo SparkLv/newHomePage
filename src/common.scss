@@ -1,5 +1,15 @@
-body{
-    margin:0
+@import './icon/iconfont.css';
+body,h1,h2,h3,h4,h5,h6{
+    margin:0;
+    font-family:'Nunito Sans', Helvetica, Arial, sans-serif;
+}
+ul{
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
+li{
+    padding:1rem;
 }
 .loading-img{
     position:absolute;
@@ -10,6 +20,7 @@ body{
 
 a{
     text-decoration: none;
+    cursor: pointer;
 }
 
 .a-block{

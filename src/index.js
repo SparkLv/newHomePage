@@ -11,12 +11,6 @@ $(function () {
         $indexContainer.append($loadingimg);
     }
     insertLoading();
-    //自适应屏幕
-    let fulScreen = () => {
-        let windowWidth = $(window).width()
-        let windowHeight = $(window).height()
-        $('.index-container').eq(0).width(windowWidth).height(windowHeight);
-    }
     //插入背景图
     let insertImg = (url) => {
         let $bgimg = $(`<img src=${url} class='index-bg-img' alt='background-image'>`);
@@ -29,7 +23,6 @@ $(function () {
     }
     //获取bing每日图片url
     let getBgImg = () => {
-        fulScreen();
         let nowTime = new Date().getTime()
         let ran = Math.floor(8 * Math.random())
         let uri = encodeURIComponent(`https://www.bing.com/HPImageArchive.aspx?format=js&idx=${ran}&n=1&nc=${nowTime}&pid=hp&ensearch=1&video=1&quiz=1&fav=1`)
@@ -48,8 +41,4 @@ $(function () {
     }
 
     getBgImg()
-
-    $(window).on('resize', () => {
-        fulScreen()
-    })
 })
