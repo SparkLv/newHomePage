@@ -6,6 +6,12 @@
         margin-right:5px;
         padding:5px;
         color:#fff;
-        background-color: cornflowerblue;
+        cursor: pointer;
+        &:hover{
+            opacity:0.8;
+        }
+        .tag-text{
+            margin-left:2px;
+        }
     }
 }

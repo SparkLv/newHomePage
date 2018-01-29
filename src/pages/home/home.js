@@ -13,6 +13,7 @@ const objArr = [{
     imgDesc: '这是图片简介',
     date:'2018-01-28 17:24:01',
     tags:['js','css','webpack'],
+    url:'/article.html?id=1',
 },
 {
     title: '测试1',
@@ -20,7 +21,8 @@ const objArr = [{
     imgUrl: articleImg,
     imgDesc: '这是图片简介',
     date:'2018-01-28 17:24:01',
-    tags:['js','css','webpack'],      
+    tags:['js','css','webpack'], 
+    url:'/article.html?id=2',         
 },
 {
     title: '测试2',
@@ -28,7 +30,8 @@ const objArr = [{
     imgUrl: articleImg,
     imgDesc: '这是图片简介',
     date:'2018-01-28 17:24:01', 
-    tags:['js','css','webpack'],       
+    tags:['js','css','webpack'],
+    url:'/article.html?id=3',           
 },
 {
     title: '测试3',
@@ -36,7 +39,8 @@ const objArr = [{
     imgUrl: articleImg,
     imgDesc: '这是图片简介',
     date:'2018-01-28 17:24:01', 
-    tags:['js','css','webpack'],       
+    tags:['js','css','webpack'],
+    url:'/article.html?id=4',           
 },
 {
     title: '测试4',
@@ -44,7 +48,8 @@ const objArr = [{
     imgUrl: articleImg,
     imgDesc: '这是图片简介',
     date:'2018-01-28 17:24:01', 
-    tags:['js','css','webpack'],       
+    tags:['js','css','webpack'],
+    url:'/home/article?id=5',          
 }
 ]
 

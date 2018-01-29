@@ -7,6 +7,7 @@ module.exports = {
     entry: {
         main: './src/index.js',
         home: './src/pages/home/home.js',
+        article:'./src/pages/home/article/article.js',
         library: './src/pages/library/library.js',
         others: './src/pages/others/others.js',
         librarys: ['jquery']
@@ -77,6 +78,14 @@ module.exports = {
             favicon: __dirname + "/favicon.ico",
             title: "spark's blog",
             chunks: ['common', 'librarys', 'home']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'article.html',
+            template: __dirname + "/src/pages/home/article/article.html",
+            inject: "body",
+            favicon: __dirname + "/favicon.ico",
+            title: "spark's blog",
+            chunks: ['common', 'librarys', 'article']
         }),
         new HtmlWebpackPlugin({
             filename: 'library.html',

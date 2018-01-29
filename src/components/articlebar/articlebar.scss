@@ -27,6 +27,9 @@
                 font-weight:800;
                 font-size:1.7rem;
             }
+            a:hover{
+                color:#333;
+            }
         }        
         .articlebar-body{
             overflow:hidden;
@@ -43,5 +46,11 @@
             margin-top:10px;
             width:100%;
         }
+    }
+}
+
+@media screen and (max-width:1024px){
+    .articlebar-box{
+        flex-direction: column;
     }
 }

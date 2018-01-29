@@ -11,8 +11,11 @@ class Box {
         }
         return text
     }
-    makeTags(arr){
+    makeTags(arr) {
         let tag = new Tags();
+        tag.bindTagClick((item) => {
+            alert(item);
+        })
         return tag.addTags(arr);
     }
     insert(data, $parent) {
@@ -24,7 +27,7 @@ class Box {
             </div>
             <div class='articlebar-container'>
                 <div class='articlebar-header'>
-                    <a>${data.title}</a>
+                    <a href=${data.url}>${data.title}</a>
                 </div>
                 <div class='articlebar-body'>
                     <p>${data.desc}</p>
