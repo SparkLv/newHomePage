@@ -6,3 +6,10 @@
     justify-content: center;
     align-items: center;
 }
+
+.index-nav {
+    display: none;
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+}

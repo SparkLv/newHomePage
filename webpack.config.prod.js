@@ -19,6 +19,7 @@ module.exports = merge(common, {
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common'
-        })
+        }),
+        new webpack.optimize.UglifyJsPlugin()
     ]
 })

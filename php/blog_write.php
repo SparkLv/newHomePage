@@ -4,17 +4,18 @@ $username = "webuser";
 $password = "za123123";
 $dbname = "webuser";
 
-$fir=$_POST['first'];
-$sec=$_POST['second'];
-$thi=$_POST['third'];
-$for=$_POST['forth'];
+$title=$_POST['title'];
+$author=$_POST['author'];
+$content=$_POST['content'];
+$create_time=$_POST['create_time'];
+$update_time=$_POST['update_time'];
 $conn = mysql_connect($servername,$username,$password);
 
 if(!$conn){
     die("连接失败：".mysql_error());
 }
 
-$sql = "INSERT INTO test (first,second,third,forth) VALUES ( '".$fir."', '".$sec."', '".$thi."', ".$for." )";
+$sql = "INSERT INTO blog_essay (title,author,content,create_time,update_time) VALUES ( '".$title."', '".$author."', '".$content."', '".$create_time."','".$update_time."' )";
 
 mysql_select_db($dbname);
 

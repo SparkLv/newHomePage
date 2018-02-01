@@ -11,7 +11,7 @@ if(!$conn){
     die("连接失败：".mysql_error());
 }
  
-$sql = "SELECT * FROM test";
+$sql = "SELECT * FROM blog_essay";
 
 mysql_select_db($dbname);
 
@@ -21,7 +21,7 @@ $arr = array();
  
 //输出数据
 while($row = mysql_fetch_array($result)) {
-    array_push($arr,array("first"=>$row["first"],"second"=>$row["second"],"third"=>$row["third"],"forth"=>$row["forth"]));
+    array_push($arr,array("title"=>$row["title"],"author"=>$row["author"],"update_time"=>$row["update_time"],"id"=>$row["id"]));
 }
 
 $echoArr = json_encode($arr);
@@ -29,17 +29,3 @@ $echoArr = json_encode($arr);
 echo $echoArr;
 
 mysql_close($conn);
-
-// $first = $_POST['first'];
-// $second = $_POST['second'];
-
-// $re0 = array(
-//     'first'=>$first,
-//     'second'=>$second
-// )
-
-// $re = json_encode($re0)
-
-// echo $re
-
-?>

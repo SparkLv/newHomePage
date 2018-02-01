@@ -12,7 +12,7 @@ hljs.highlightCode = function () {
 $(function () {
     const $writeBox = $('.write-box').eq(0);
     const $previewBox = $('.preview-box').eq(0);
-    const repalceEle = function(Ele){
+    const repalceEle = function (Ele) {
         var ele = Ele;
         var start = this.selectionStart;
         var end = this.selectionEnd;
@@ -25,12 +25,27 @@ $(function () {
         //支持tab键
         if (e.keyCode == 9) {
             e.preventDefault();
-           repalceEle.call(this,'    ');
+            repalceEle.call(this, '    ');
         }
         $previewBox.html(marked($writeBox.val()));
         hljs.highlightCode();
     });
-    $writeBox.on('click',function(){
+    $writeBox.on('click', function () {
         $previewBox.scrollTop($(this).scrollTop());
+    })
+
+    $('#blog-submit').click(function () {
+        let title = $('#blog-title').val();
+        let author = $('#blog-author').val();
+        let content = $writeBox.val();
+        let create_time = $('#blog-create-time').val();
+        let update_time = $('#blog-update-time').val();
+        $.ajax({
+            url: '/php/blog_write.php',
+            method: 'post',
+            data: { title, author, content, create_time, update_time },
+            success: function (data) { console.log(data) },
+            error: function (error) { console.log(error) }
+        })
     })
 })

@@ -11,45 +11,45 @@ const objArr = [{
     的背后。尽管这解决了可移植的问题，但无法对遮罩层Z轴层次进行细粒度的控制，它可能出现在这个元素之后（期望的），但也可能出现在这个元素的父元素活着祖先元素之后。`,
     imgUrl: articleImg,
     imgDesc: '这是图片简介',
-    date:'2018-01-28 17:24:01',
-    tags:['js','css','webpack'],
-    url:'/article.html?id=1',
+    date: '2018-01-28 17:24:01',
+    tags: ['js', 'css', 'webpack'],
+    url: '/article.html?id=1',
 },
 {
     title: '测试1',
     desc: '这个效果需要JS 给<body>添加dimmed这个类，如果把遮罩层交给元素自己的::bofore伪元素来实现，就可以弥补不足。给伪元素设置z-index:-1;就可以让它出现在元素的背后。尽管这解决了可移植的问题，但无法对遮罩层Z轴层次进行细粒度的控制，它可能出现在这个元素之后（期望的），但也可能出现在这个元素的父元素活着祖先元素之后。',
     imgUrl: articleImg,
     imgDesc: '这是图片简介',
-    date:'2018-01-28 17:24:01',
-    tags:['js','css','webpack'], 
-    url:'/article.html?id=2',         
+    date: '2018-01-28 17:24:01',
+    tags: ['js', 'css', 'webpack'],
+    url: '/article.html?id=2',
 },
 {
     title: '测试2',
     desc: '这个效果需要JS 给<body>添加dimmed这个类，如果把遮罩层交给元素自己的::bofore伪元素来实现，就可以弥补不足。给伪元素设置z-index:-1;就可以让它出现在元素的背后。尽管这解决了可移植的问题，但无法对遮罩层Z轴层次进行细粒度的控制，它可能出现在这个元素之后（期望的），但也可能出现在这个元素的父元素活着祖先元素之后。',
     imgUrl: articleImg,
     imgDesc: '这是图片简介',
-    date:'2018-01-28 17:24:01', 
-    tags:['js','css','webpack'],
-    url:'/article.html?id=3',           
+    date: '2018-01-28 17:24:01',
+    tags: ['js', 'css', 'webpack'],
+    url: '/article.html?id=3',
 },
 {
     title: '测试3',
     desc: '这个效果需要JS 给<body>添加dimmed这个类，如果把遮罩层交给元素自己的::bofore伪元素来实现，就可以弥补不足。给伪元素设置z-index:-1;就可以让它出现在元素的背后。尽管这解决了可移植的问题，但无法对遮罩层Z轴层次进行细粒度的控制，它可能出现在这个元素之后（期望的），但也可能出现在这个元素的父元素活着祖先元素之后。',
     imgUrl: articleImg,
     imgDesc: '这是图片简介',
-    date:'2018-01-28 17:24:01', 
-    tags:['js','css','webpack'],
-    url:'/article.html?id=4',           
+    date: '2018-01-28 17:24:01',
+    tags: ['js', 'css', 'webpack'],
+    url: '/article.html?id=4',
 },
 {
     title: '测试4',
     desc: '这个效果需要JS 给<body>添加dimmed这个类，如果把遮罩层交给元素自己的::bofore伪元素来实现，就可以弥补不足。给伪元素设置z-index:-1;就可以让它出现在元素的背后。尽管这解决了可移植的问题，但无法对遮罩层Z轴层次进行细粒度的控制，它可能出现在这个元素之后（期望的），但也可能出现在这个元素的父元素活着祖先元素之后。',
     imgUrl: articleImg,
     imgDesc: '这是图片简介',
-    date:'2018-01-28 17:24:01', 
-    tags:['js','css','webpack'],
-    url:'/home/article?id=5',          
+    date: '2018-01-28 17:24:01',
+    tags: ['js', 'css', 'webpack'],
+    url: '/home/article?id=5',
 }
 ]
 
@@ -95,42 +95,18 @@ $(function () {
         $clear.css('visibility', 'hidden');
         $searchInput.val('').focus()
     })
-
+    $.ajax({
+        url: '/php/blog_read.php',
+        method: 'get',
+        success: (data) => {
+            console.log(data)
+        },
+        error: (error) => {
+            console.log(error)
+        }
+    })
     let test = new ArticleBar();
     objArr.forEach((item) => {
         test.insert(item, $homeContainer);
-    })
-    // let insertLoading = () => {
-    //     let url = require('../../assets/loading.svg');
-    //     let $loadingimg = $(`<img src=${url} class='loading-img' alt='loading'>`);
-    //     let $indexContainer = $('body').eq(0);
-    //     $indexContainer.append($loadingimg);
-    // }
-    // insertLoading();
-    // $.ajax({
-    //     url: 'http://sparklv.cn/php/test2.php',
-    //     data: {
-    //         first: 'wenbin',
-    //         second: 'lv',
-    //         third: 'is',
-    //         forth: 28
-    //     },
-    //     method: 'post',
-    //     success: (data) => {
-    //         console.log(data)
-    //         $.ajax({
-    //             url: 'http://sparklv.cn/php/test.php',
-    //             method: 'get',
-    //             success: (data) => {
-    //                 console.log(data)
-    //             },
-    //             error: (error) => {
-    //                 console.log(error)
-    //             }
-    //         })
-    //     },
-    //     error: (error) => {
-    //         console.log(error)
-    //     }
-    // })
+    });
 })

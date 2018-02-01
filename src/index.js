@@ -5,7 +5,7 @@ import 'animate.css/animate.min.css'
 $(function () {
     //loading图
     let insertLoading = () => {
-        let url = require('./assets/loading.svg');
+        let url = require('./assets/loading.gif');
         let $loadingimg = $(`<img src=${url} class='loading-img' alt='loading'>`);
         let $indexContainer = $('.index-container').eq(0);
         $indexContainer.append($loadingimg);

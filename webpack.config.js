@@ -10,11 +10,18 @@ module.exports = {
         article: './src/pages/home/article/article.js',
         library: './src/pages/library/library.js',
         others: './src/pages/others/others.js',
-        admin:'./src/pages/admin/admin.js',
+        admin: './src/pages/admin/admin.js',
         librarys: ['jquery']
     },
     module: {
         rules: [
+            {
+                test: /\.(js|jsx)/,
+                use: {
+                    loader: 'babel-loader'
+                },
+                exclude: /node_modules/
+            },
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({

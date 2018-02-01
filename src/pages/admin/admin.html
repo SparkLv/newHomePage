@@ -11,9 +11,30 @@
 </head>
 
 <body>
-    <div>
-        <textarea class="write-box" spellcheck="false"></textarea>
-        <section class="preview-box"></section>
+    <div class="admin-box">
+        <div class="essay-box">
+            <textarea class="write-box" spellcheck="false"></textarea>
+            <section class="preview-box"></section>
+        </div>
+        <div class="oper-box">
+            <label>
+                标题：
+                <input id="blog-title" type="text">
+            </label>
+            <label>
+                作者：
+                <input id="blog-author" type="text">
+            </label>
+            <label>
+                创建时间：
+                <input id="blog-create-time" type="text">
+            </label>
+            <label>
+                更新时间：
+                <input id="blog-update-time" type="text">
+            </label>
+            <button id="blog-submit">提交</button>
+        </div>
     </div>
 </body>
 
