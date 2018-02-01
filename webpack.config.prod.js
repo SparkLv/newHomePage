@@ -5,6 +5,7 @@ const path = require('path')
 const webpack = require('webpack')
 
 module.exports = merge(common, {
+    devtool: 'source-map',
     output: {
         filename: 'static/js/[name].bundle.[chunkhash:8].js',
         path: path.resolve(__dirname, 'dist'),

@@ -7,43 +7,27 @@ module.exports = {
     entry: {
         main: './src/index.js',
         home: './src/pages/home/home.js',
-        article:'./src/pages/home/article/article.js',
+        article: './src/pages/home/article/article.js',
         library: './src/pages/library/library.js',
         others: './src/pages/others/others.js',
+        admin:'./src/pages/admin/admin.js',
         librarys: ['jquery']
     },
     module: {
         rules: [
             {
                 test: /\.css$/,
-                use: [
-                    {
-                        loader: 'style-loader'
-                    },
-                    {
-                        loader: 'css-loader',
-                    },
-                    {
-                        loader: 'postcss-loader'
-                    }
-                ]
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'postcss-loader']
+                })
             },
             {
                 test: /\.scss$/,
-                use: [
-                    {
-                        loader: 'style-loader'
-                    },
-                    {
-                        loader: 'css-loader',
-                    },
-                    {
-                        loader: 'postcss-loader'
-                    },
-                    {
-                        loader: 'sass-loader'
-                    }
-                ]
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'postcss-loader', 'sass-loader']
+                })
             },
             {
                 test: /\.(png|jpg|svg|gif|eot|woff|ttf|)$/,
@@ -61,7 +45,7 @@ module.exports = {
             jQuery: 'jquery',
         }),
         new ExtractTextPlugin({
-            filename: 'static/css/[name].[contentehash:8].css'
+            filename: 'static/css/[name].[chunkhash:8].css'
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
@@ -102,6 +86,14 @@ module.exports = {
             favicon: __dirname + "/favicon.ico",
             title: "spark's blog",
             chunks: ['common', 'librarys', 'others']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'admin.html',
+            template: __dirname + "/src/pages/admin/admin.html",
+            inject: "body",
+            favicon: __dirname + "/favicon.ico",
+            title: "spark's blog",
+            chunks: ['common', 'librarys', 'admin']
         })
     ]
 }

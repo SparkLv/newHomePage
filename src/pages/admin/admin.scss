@@ -1,0 +1,21 @@
+@mixin box{
+    width:40vw;
+    height:85vh;
+    float:left;
+    border:1px solid #333;
+    padding:20px;
+    overflow: auto;
+    font-size:14px;
+}
+
+.write-box{
+    @include box;
+}
+
+.preview-box{
+    @include box;
+    margin-left:10vw;
+    pre{
+        // background-color: #333;
+    }    
+}
