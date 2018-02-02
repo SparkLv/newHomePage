@@ -2,6 +2,7 @@ import marked from 'marked'
 import './admin.scss'
 import "highlight.js/styles/vs2015.css";
 import hljs from "highlight.js";
+import {Base64} from 'js-base64';
 
 hljs.highlightCode = function () {
     //自定义highlightCode方法，将只执行一次的逻辑去掉
@@ -37,13 +38,15 @@ $(function () {
     $('#blog-submit').click(function () {
         let title = $('#blog-title').val();
         let author = $('#blog-author').val();
-        let content = $writeBox.val();
+        let desc = $('#blog-desc').val();
+        let tags = $('#blog-tags').val();
+        let content = Base64.encode($writeBox.val());
         let create_time = $('#blog-create-time').val();
         let update_time = $('#blog-update-time').val();
         $.ajax({
-            url: '/php/blog_write.php',
+            url: 'http://sparklv.cn/php/blog_write.php',
             method: 'post',
-            data: { title, author, content, create_time, update_time },
+            data: { title, author, desc,tags,content, create_time, update_time },
             success: function (data) { console.log(data) },
             error: function (error) { console.log(error) }
         })

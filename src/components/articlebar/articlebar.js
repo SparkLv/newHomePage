@@ -33,7 +33,7 @@ class Box {
                     <p>${data.desc}</p>
                 </div>
                 <div class='articlebar-date'>
-                    <span>写于${data.date}</span>
+                    <span>最后编辑于${data.date}</span>
                 </div>
                 <div class='articlebar-footer'>
                 </div>

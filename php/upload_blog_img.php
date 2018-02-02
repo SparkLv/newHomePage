@@ -1,4 +1,5 @@
 <?php
+    header("Access-Control-Allow-Origin: *");
     $imgname = $_FILES['myfile']['name'];
     $tmp = $_FILES['myfile']['tmp_name'];
     $filepath = 'photo/';

@@ -12,7 +12,7 @@ if(!$conn){
     die("连接失败：".mysql_error());
 }
  
-$sql = "SELECT * FROM blog_essay";
+$sql = "SELECT * FROM blog_tags";
 
 mysql_select_db($dbname);
 
@@ -22,7 +22,7 @@ $arr = array();
  
 //输出数据
 while($row = mysql_fetch_array($result)) {
-    array_push($arr,array("title"=>$row["title"],"author"=>$row["author"],"description"=>$row["description"],"imgurl"=>$row["imgurl"],"tags"=>$row["tags"],"update_time"=>$row["update_time"],"id"=>$row["id"]));
+    array_push($arr,array("id"=>$row["id"],"name"=>$row["name"],"color"=>$row["color"]));
 }
 
 $echoArr = json_encode($arr);

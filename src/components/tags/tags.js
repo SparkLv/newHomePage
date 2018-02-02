@@ -11,20 +11,14 @@ class Box {
     clickTag(item, e) {
         this.activeTag = item;
         if (this.tagClickFun) {
-            this.tagClickFun(this.activeTag);
+            this.tagClickFun(JSON.stringify(this.activeTag));
         }
     }
     makeTag(item) {
-        let color = '';
-        switch (item) {
-            case 'js': color = '#20B2AA'; break;
-            case 'css': color = '#C67171'; break;
-            default: color = 'cornflowerblue';
-        }
         let $tag = $(`
-        <span class='tags-item' style='background-color:${color}'>
+        <span class='tags-item' style='background-color:${item.color}'>
             <i class='icon iconfont icon-tag'></i>
-            <span class='tag-text'>${item}</span>
+            <span class='tag-text'>${item.name}</span>
         </span>
         `);
         $tag.on('click', this.clickTag.bind(this, item));

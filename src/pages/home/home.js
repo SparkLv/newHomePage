@@ -2,57 +2,6 @@ import '../../common.scss'
 import './home.scss'
 import ArticleBar from '../../components/articlebar/articlebar'
 
-const articleImg = require('../../assets/articleimg.jpg')
-
-const objArr = [{
-    title: '测试',
-    desc: `这个效果需要JS 给<body>添加dimmed这个类，如果把遮罩层交给元素自己的::bofore伪元素来实现，就可以弥补不足。给伪元素设置z-index:-1;就可以让它出现在元素
-    这个效果需要JS 给<body>添加dimmed这个类，如果把遮罩层交给元素自己的::bofore伪元这个效果需要JS 给<body>添加dimmed这个类，如果把遮罩层交给元素自己的::bofore伪元这个添加dimmed这个类，如果把遮罩自己的::bofore伪元
-    的背后。尽管这解决了可移植的问题，但无法对遮罩层Z轴层次进行细粒度的控制，它可能出现在这个元素之后（期望的），但也可能出现在这个元素的父元素活着祖先元素之后。`,
-    imgUrl: articleImg,
-    imgDesc: '这是图片简介',
-    date: '2018-01-28 17:24:01',
-    tags: ['js', 'css', 'webpack'],
-    url: '/article.html?id=1',
-},
-{
-    title: '测试1',
-    desc: '这个效果需要JS 给<body>添加dimmed这个类，如果把遮罩层交给元素自己的::bofore伪元素来实现，就可以弥补不足。给伪元素设置z-index:-1;就可以让它出现在元素的背后。尽管这解决了可移植的问题，但无法对遮罩层Z轴层次进行细粒度的控制，它可能出现在这个元素之后（期望的），但也可能出现在这个元素的父元素活着祖先元素之后。',
-    imgUrl: articleImg,
-    imgDesc: '这是图片简介',
-    date: '2018-01-28 17:24:01',
-    tags: ['js', 'css', 'webpack'],
-    url: '/article.html?id=2',
-},
-{
-    title: '测试2',
-    desc: '这个效果需要JS 给<body>添加dimmed这个类，如果把遮罩层交给元素自己的::bofore伪元素来实现，就可以弥补不足。给伪元素设置z-index:-1;就可以让它出现在元素的背后。尽管这解决了可移植的问题，但无法对遮罩层Z轴层次进行细粒度的控制，它可能出现在这个元素之后（期望的），但也可能出现在这个元素的父元素活着祖先元素之后。',
-    imgUrl: articleImg,
-    imgDesc: '这是图片简介',
-    date: '2018-01-28 17:24:01',
-    tags: ['js', 'css', 'webpack'],
-    url: '/article.html?id=3',
-},
-{
-    title: '测试3',
-    desc: '这个效果需要JS 给<body>添加dimmed这个类，如果把遮罩层交给元素自己的::bofore伪元素来实现，就可以弥补不足。给伪元素设置z-index:-1;就可以让它出现在元素的背后。尽管这解决了可移植的问题，但无法对遮罩层Z轴层次进行细粒度的控制，它可能出现在这个元素之后（期望的），但也可能出现在这个元素的父元素活着祖先元素之后。',
-    imgUrl: articleImg,
-    imgDesc: '这是图片简介',
-    date: '2018-01-28 17:24:01',
-    tags: ['js', 'css', 'webpack'],
-    url: '/article.html?id=4',
-},
-{
-    title: '测试4',
-    desc: '这个效果需要JS 给<body>添加dimmed这个类，如果把遮罩层交给元素自己的::bofore伪元素来实现，就可以弥补不足。给伪元素设置z-index:-1;就可以让它出现在元素的背后。尽管这解决了可移植的问题，但无法对遮罩层Z轴层次进行细粒度的控制，它可能出现在这个元素之后（期望的），但也可能出现在这个元素的父元素活着祖先元素之后。',
-    imgUrl: articleImg,
-    imgDesc: '这是图片简介',
-    date: '2018-01-28 17:24:01',
-    tags: ['js', 'css', 'webpack'],
-    url: '/home/article?id=5',
-}
-]
-
 $(function () {
     const $homeBox = $('.home-box').eq(0);
     const $homeContainer = $('.home-container').eq(0);
@@ -76,7 +25,12 @@ $(function () {
         }
     })
     $search.click(() => {
-        alert($searchInput.val());
+        if ($searchInput.css('display') === 'none') {
+            $searchInput.css('display', 'inline-block');
+        }
+        else {
+            $searchInput.css('display', 'none');
+        }
     });
     $searchInput.on('input', (e) => {
         if (e.target.value) {
@@ -96,17 +50,49 @@ $(function () {
         $searchInput.val('').focus()
     })
     $.ajax({
-        url: '/php/blog_read.php',
+        url: 'http://sparklv.cn/php/blog_all_tag.php',
         method: 'get',
         success: (data) => {
-            console.log(data)
+            let tagsArr = JSON.parse(data);
+            let tagsToColor = {};
+            tagsArr.forEach((item) => {
+                tagsToColor[item.name] = { id: item.id, color: item.color };
+            })
+            $.ajax({
+                url: 'http://sparklv.cn/php/blog_read.php',
+                method: 'get',
+                success: (data) => {
+                    let data1 = JSON.parse(data);
+                    let test = new ArticleBar();
+                    data1.forEach((item) => {
+                        if (item.imgurl) {
+                            item.imgUrl = imgurl
+                        }
+                        else {
+                            item.imgUrl = 'http://sparklv.cn/photo/articleimg.jpg';
+                        }
+                        item.desc = item.description;
+                        item.tags = item.tags.split(',');
+                        item.tags = item.tags.map((item1) => {
+                            return {
+                                id: tagsToColor[item1].id,
+                                name: item1,
+                                color: tagsToColor[item1].color
+                            }
+                        })
+                        item.date = item.update_time;
+                        item.url = '/article.html?id=' + item.id;
+                        item.imgDesc = item.title;
+                        test.insert(item, $homeContainer);
+                    });
+                },
+                error: (error) => {
+                    console.log(error)
+                }
+            })
         },
         error: (error) => {
             console.log(error)
         }
     })
-    let test = new ArticleBar();
-    objArr.forEach((item) => {
-        test.insert(item, $homeContainer);
-    });
 })
