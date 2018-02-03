@@ -8,6 +8,7 @@ $(function () {
     const $homeHeader = $('.home-header').eq(0);
     const $search = $('.icon-search').eq(0);
     const $searchInput = $('.home-nav-search').eq(0);
+    const $homeNavbarNav = $('.home-navbar-nav').eq(0);
     const $clear = $('.icon-clear').eq(0);
     const bgImgUrl = require('../../assets/home-bg.jpg');
     const $bgImg = $(`<div class='home-bg'></div>`);
@@ -17,19 +18,23 @@ $(function () {
         const top = $(window).scrollTop();
         const opacity = 1 - (top / 400);
         $bgImg.css('opacity', opacity);
-        if (top > 50) {
-            $homeHeader.addClass('home-header-fixed')
-        }
-        else {
-            $homeHeader.removeClass('home-header-fixed')
+    })
+    $(window).click((e) => {
+        if (e.target.className !== 'home-nav-search' && e.target.className !== 'icon iconfont icon-search') {
+            $searchInput.val('').css({ 'display': 'none', 'width': '0' });
+            $clear.css('visibility', 'hidden');
+            $homeNavbarNav.css({ 'opacity': 1, 'z-index': 2 });
         }
     })
     $search.click(() => {
         if ($searchInput.css('display') === 'none') {
-            $searchInput.css('display', 'inline-block');
+            $searchInput.css({ 'display': 'inline-block', 'width': '255px' });
+            $homeNavbarNav.css({ 'opacity': 0, 'z-index': -1 });
         }
         else {
-            $searchInput.css('display', 'none');
+            $searchInput.val('').css({ 'display': 'none', 'width': '0' });
+            $clear.css('visibility', 'hidden');
+            $homeNavbarNav.css({ 'opacity': 1, 'z-index': 2 });
         }
     });
     $searchInput.on('input', (e) => {
@@ -42,7 +47,7 @@ $(function () {
     })
     $searchInput.on('keypress', (e) => {
         if (event.keyCode === 13) {
-            $search.click()
+            alert(e.target.value)
         }
     })
     $clear.click(() => {
