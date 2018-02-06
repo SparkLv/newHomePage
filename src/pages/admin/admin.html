@@ -12,37 +12,57 @@
 
 <body>
     <div class="admin-box">
-        <div class="essay-box">
-            <textarea class="write-box" spellcheck="false"></textarea>
-            <section class="preview-box"></section>
+        <div class="admin-title">
+            <h2>文章管理后台</h2>
         </div>
-        <div class="oper-box">
-            <label>
-                标题：
-                <input id="blog-title" type="text">
-            </label>
-            <label>
-                作者：
-                <input id="blog-author" type="text">
-            </label>
-            <label>
-                描述：
-                <input id="blog-desc" type="text">
-            </label>
-            <label>
-                tags：
-                <input id="blog-tags" type="text">
-            </label>
-            <label>
-                创建时间：
-                <input id="blog-create-time" type="text">
-            </label>
-            <label>
-                更新时间：
-                <input id="blog-update-time" type="text">
-            </label>
-            <button id="blog-submit">提交</button>
+        <div class="admin-body">
+            <div class="admin-title-bar">
+                <label>
+                    标题：
+                    <input id="blog-title" type="text">
+                </label>
+                <button class="btn btn-primary title-submit-btn">
+                    上传
+                </button>
+            </div>
+            <div class="admin-tool-bar">
+                <button class="btn btn-primary img-input-btn">
+                    添加图片
+                    <input id="img-input" type="file" accept="image/*">
+                </button>
+            </div>
+            <div class="essay-box">
+                <textarea class="write-box" spellcheck="false"></textarea>
+                <div class="admin-toggle-bar">
+                    <span class="toggle-sign">></span>
+                </div>
+                <section class="preview-box"></section>
+            </div>
+            <div class="oper-box">
+                <label>
+                    作者：
+                    <input id="blog-author" type="text">
+                </label>
+                <label>
+                    描述：
+                    <input id="blog-desc" type="text">
+                </label>
+                <label>
+                    tags：
+                    <input id="blog-tags" type="text">
+                </label>
+                <label>
+                    创建时间：
+                    <input id="blog-create-time" type="text">
+                </label>
+                <label>
+                    更新时间：
+                    <input id="blog-update-time" type="text">
+                </label>
+                <button id="blog-submit">提交</button>
+            </div>
         </div>
+
     </div>
 </body>
 

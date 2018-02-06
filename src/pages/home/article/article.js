@@ -13,6 +13,13 @@ hljs.highlightCode = function () {
 };
 
 $(function () {
+    let $articleBox = $('.article-box').eq(0);
+    let insertLoading = () => {
+        let url = require('../../../assets/loading.gif');
+        let $loadingimg = $(`<img src=${url} class='loading-img' alt='loading'>`);
+        $articleBox.append($loadingimg);
+    }
+    insertLoading();
     $.ajax({
         url: 'http://sparklv.cn/php/blog_essay.php',
         method: 'post',
@@ -22,6 +29,7 @@ $(function () {
             let content = Base64.decode(data1.content);
             $('#essay-content').html(marked(content));
             hljs.highlightCode();
+            $('.loading-img').eq(0).css('display', 'none');
         },
         error: (error) => {
             console.log(error)
