@@ -5,7 +5,7 @@ import "highlight.js/styles/vs2015.css";
 import hljs from "highlight.js";
 import { Base64 } from 'js-base64';
 
-import Modal from'../../components/modal/modal'
+import Modal from '../../components/modal/modal'
 
 hljs.highlightCode = function () {
     //自定义highlightCode方法，将只执行一次的逻辑去掉
@@ -35,17 +35,18 @@ $(function () {
         $previewBox.html(marked($writeBox.val()));
         hljs.highlightCode();
     });
-    $writeBox.on('click', function () {
-        $previewBox.scrollTop($(this).scrollTop());
-    })
+    let previewScroll = function () {
+        $writeBox.scrollTop($previewBox.scrollTop());
+    }
+    $previewBox.on('scroll', previewScroll);
     //获取所有tag
     $.ajax({
-        url:'http://sparklv.cn/php/blog_all_tag.php',
-        method:'get',
-        success(data){
+        url: 'http://sparklv.cn/php/blog_all_tag.php',
+        method: 'get',
+        success(data) {
             console.log(data)
         },
-        error(error){
+        error(error) {
             console.log(data)
         }
     })
@@ -60,24 +61,6 @@ $(function () {
             $toggleSign.text('<')
         }
     })
-    //提交表单
-    $('#blog-submit').click(function () {
-        let title = $('#blog-title').val();
-        let author = $('#blog-author').val();
-        let desc = $('#blog-desc').val();
-        let tags = $('#blog-tags').val();
-        let content = Base64.encode($writeBox.val());
-        let create_time = $('#blog-create-time').val();
-        let update_time = $('#blog-update-time').val();
-        $.ajax({
-            url: 'http://sparklv.cn/php/blog_write.php',
-            method: 'post',
-            data: { title, author, desc, tags, content, create_time, update_time },
-            success: function (data) { console.log(data) },
-            error: function (error) { console.log(error) }
-        })
-    })
-
     //上传图片
     $('#img-input').on('change', () => {
         let formData = new FormData();
@@ -102,6 +85,52 @@ $(function () {
             }
         })
     })
-    let modal = new Modal();
-    modal.make();
+
+    $('.title-submit-btn').eq(0).on('click', () => {
+        let modal = new Modal();
+        let now = new Date();
+        let nowTime = now.getFullYear() + '-' + ((now.getMonth() + 1) < 10 ? '0' + (now.getMonth() + 1) : (now.getMonth() + 1)) + '-' + (now.getDate() < 10 ? '0' + now.getDate() : now.getDate());
+        modal.make({
+            title: '提交信息',
+            size: 'normal',
+            body: `
+            <div class="oper-box">
+                <label>
+                    <span>作者：</span>
+                    <input id="blog-author" type="text">
+                </label>
+                <label>
+                    <span>描述：</span>
+                    <textarea id="blog-desc" rows=5 />
+                </label>
+                <label>
+                    <span>Tags：</span>
+                    <input id="blog-tags" type="text">
+                </label>
+                <span class='blog-now-time'>编辑于：${nowTime}</span>
+            </div>
+            `,
+            confirm: function () {
+                let title = $('#blog-title').val();
+                let author = $('#blog-author').val();
+                let desc = $('#blog-desc').val();
+                let tags = $('#blog-tags').val();
+                let content = Base64.encode($writeBox.val());
+                let create_time = nowTime;
+                let update_time = nowTime;
+                $.ajax({
+                    url: 'http://sparklv.cn/php/blog_write.php',
+                    method: 'post',
+                    data: { title, author, desc, tags, content, create_time, update_time },
+                    success: function (data) {
+                        console.log(data);
+                        modal.removeModal();
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                })
+            }
+        });
+    })
 })

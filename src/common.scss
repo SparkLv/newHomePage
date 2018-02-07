@@ -50,6 +50,18 @@ a{
     border-radius:5px;
     cursor: pointer;
     outline:none;
+    border:1px solid #eee;
+}
+
+.btn:hover{
+    background-color:#eee;
+}
+
+.btn:focus{
+    background-color:#eee;
+}
+.btn:active{
+    background-color:#eee;
 }
 
 .btn a{

@@ -15,17 +15,40 @@
     background-color: white;
     z-index: 1000;
     .modal-header{
+        display:flex;
+        justify-content: space-between;
         height:50px;
         background-color:#fff;
         border-bottom: 1px solid #e8e8e8;
         .modal-title{
             line-height: 50px;
+            margin-left:10px;
+            font-size:16px;
+            color:#333;
+        }
+        .modal-icon-clear{
+            line-height: 50px;
+            margin-right:10px;
+            font-size:20px;
+            cursor: pointer;
         }
     }
+    .modal-body{
+        padding:10px;
+    }
     .modal-footer{
+        display:flex;
+        flex-direction: row-reverse;
+        align-items: center;
         height:50px;
         background-color:#fff;
         border-top: 1px solid #e8e8e8;
+        .modal-confirm-btn{
+            margin-right:10px;
+        }
+        .modal-cancel-btn{
+            margin-right:10px;
+        }
     }
 }
 

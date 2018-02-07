@@ -58,9 +58,8 @@ $(function () {
         url: 'http://sparklv.cn/php/blog_all_tag.php',
         method: 'get',
         success: (data) => {
-            let tagsArr = JSON.parse(data);
             let tagsToColor = {};
-            tagsArr.forEach((item) => {
+            data.forEach((item) => {
                 tagsToColor[item.name] = { id: item.id, color: item.color };
             })
             $.ajax({
