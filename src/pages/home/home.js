@@ -10,10 +10,7 @@ $(function () {
     const $searchInput = $('.home-nav-search').eq(0);
     const $homeNavbarNav = $('.home-navbar-nav').eq(0);
     const $clear = $('.icon-clear').eq(0);
-    const bgImgUrl = require('../../assets/home-bg.jpg');
-    const $bgImg = $(`<div class='home-bg'></div>`);
-    $bgImg.css('background', `url(${bgImgUrl}) no-repeat center center/auto auto`)
-    $homeBox.append($bgImg);
+    const $bgImg = $('.home-bg').eq(0);
     $(window).scroll((e) => {
         const top = $(window).scrollTop();
         const opacity = 1 - (top / 400);
@@ -93,6 +90,112 @@ $(function () {
                 error: (error) => {
                     console.log(error)
                 }
+            })
+        },
+        error: (error) => {
+            console.log(error)
+        }
+    })
+    $.ajax({
+        url: 'http://sparklv.cn/php/get_book_tags.php',
+        method: 'get',
+        success: (data) => {
+            let bookTags = [];
+            let tagType = [];
+            data.forEach((item) => {
+                if (tagType.indexOf(item.type) === -1) {
+                    tagType.push(item.type)
+                }
+            })
+            tagType.forEach((item) => {
+                bookTags.push([]);
+                data.forEach((item1) => {
+                    if (item1.type === item) {
+                        bookTags[bookTags.length - 1].push(item1)
+                    }
+                })
+            })
+            let $bookBox = $('.book-box').eq(0);
+            bookTags.forEach((item2) => {
+                let $Box = $("<div class='middle-nav-box'></div>")
+                let $title = $(`<div class='middle-nav-title'>${item2[0].type}</div>`)
+                $Box.append($title)
+                item2.forEach((item3) => {
+                    let $Nav = $(`<span class='middle-nav-nav'>${item3.name}</span>`);
+                    $Box.append($Nav);
+                })
+                $bookBox.append($Box);
+            })
+        },
+        error: (error) => {
+            console.log(error)
+        }
+    })
+    $.ajax({
+        url: 'http://sparklv.cn/php/get_essay_tags.php',
+        method: 'get',
+        success: (data) => {
+            let essayTags = [];
+            let tagType = [];
+            data.forEach((item) => {
+                if (tagType.indexOf(item.type) === -1) {
+                    tagType.push(item.type)
+                }
+            })
+            tagType.forEach((item) => {
+                essayTags.push([]);
+                data.forEach((item1) => {
+                    if (item1.type === item) {
+                        essayTags[essayTags.length - 1].push(item1)
+                    }
+                })
+            })
+            let $essayBox = $('.essay-box').eq(0);
+            essayTags.forEach((item2) => {
+                let $Box = $("<div class='middle-nav-box'></div>")
+                let $title = $(`<div class='middle-nav-title'>${item2[0].type}</div>`)
+                $Box.append($title)
+                item2.forEach((item3) => {
+                    let $Nav = $(`<span class='middle-nav-nav'>${item3.name}</span>`);
+                    $Box.append($Nav);
+                })
+                $essayBox.append($Box);
+            })
+        },
+        error: (error) => {
+            console.log(error)
+        }
+    })
+    //it box
+    $.ajax({
+        url: 'http://sparklv.cn/php/get_it_tags.php',
+        method: 'get',
+        success: (data) => {
+            let itTags = [];
+            let tagType = [];
+            data.forEach((item) => {
+                if (tagType.indexOf(item.type) === -1) {
+                    tagType.push(item.type)
+                }
+            })
+            tagType.forEach((item) => {
+                itTags.push([]);
+                data.forEach((item1) => {
+                    if (item1.type === item) {
+                        itTags[itTags.length - 1].push(item1)
+                    }
+                })
+            })
+            let $itBox = $('.it-box').eq(0);
+            itTags.forEach((item2) => {
+                let $Box = $("<div class='middle-nav-box'></div>")
+                let $title = $(`<div class='middle-nav-title'>${item2[0].type}</div>`)
+                $Box.append($title)
+                item2.forEach((item3) => {
+                    let $Nav = $(`<span class='middle-nav-nav'>${item3.name}</span>`);
+                    $Box.append($Nav);
+                })
+                $itBox.append($Box);
             })
         },
         error: (error) => {

@@ -6,12 +6,89 @@ $theme-color:#658db5;
     text-align: center;
     min-height:100vh;
     .home-bg{
+        display:flex;
+        flex-direction: row;
         position: fixed;
         overflow:hidden;
         top:50px;
         height:500px;
         width:100vw;
-        z-index:-1;
+        z-index:1;
+        background:url('http://sparklv.cn/photo/home-bg.jpg') no-repeat center center/auto auto;
+        .home-bg-box{
+            flex:1;
+            display:flex;
+            align-items: center;
+            flex-direction: column;
+            border-right:1px solid #eee;
+            text-align: left;
+            padding:20px;
+            h2{
+                margin-top:50px;
+            }
+            .middle-nav-box{
+                display:none;
+                padding:20px;
+                .middle-nav-title{
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+                .middle-nav-nav{
+                    display:inline-block;
+                    margin-right:10px;
+                    margin-top:10px;
+                    cursor: pointer;
+                    &:hover{
+                        color:#eee;
+                    }
+                }
+            }
+        }
+        .it-box{
+            background-color:rgba(221, 165, 10, 0.2);
+            &:hover{
+                background-color:rgba(221, 165, 10, 0.8);
+                &{
+                    align-items: flex-start;
+                }
+                .middle-nav-box{
+                    display:block;
+                }
+                h2{
+                    display:none;
+                }
+            } 
+        }
+        .book-box{
+            background-color: rgba(255,255,255,0.2);
+            &:hover{
+                background-color: rgba(255,255,255,0.8);
+                &{
+                    align-items: flex-start;
+                }
+                .middle-nav-box{
+                    display:block;
+                }
+                h2{
+                    display:none;
+                }
+            }
+        }
+        .essay-box{
+            background-color:rgba(9, 226, 143,0.2);
+            &:hover{
+                background-color:rgba(9, 226, 143, 0.8);
+                &{
+                    align-items: flex-start;
+                }
+                .middle-nav-box{
+                    display:block;
+                }
+                h2{
+                    display:none;
+                }              
+            }
+        }
     }
     .home-header{
         display:flex;
@@ -25,7 +102,7 @@ $theme-color:#658db5;
         padding:10px 0;
         background-color: $theme-color;
         color:#fff;
-        z-index:2;
+        z-index:3;
         .home-collapse-nav{
             width:30px;
             height:50px;
@@ -160,6 +237,7 @@ $theme-color:#658db5;
         flex-direction: row;
         padding:0.5rem 1rem;
         margin-top:400px;
+        z-index:2;
         background:#eee;
         // min-height:600px;
         .home-container{
@@ -189,6 +267,7 @@ $theme-color:#658db5;
         min-height:50px;
         color:#fff;
         padding:20px 0;
+        z-index:2;
         background-color: $theme-color;
         text-align: left;
         @mixin footer-padding{
