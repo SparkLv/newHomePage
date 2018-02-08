@@ -10,7 +10,7 @@ $theme-color:#658db5;
         flex-direction: row;
         position: fixed;
         overflow:hidden;
-        top:50px;
+        // top:50px;
         height:500px;
         width:100vw;
         z-index:1;
@@ -100,7 +100,8 @@ $theme-color:#658db5;
         justify-content:space-between;
         height:30px;
         padding:10px 0;
-        background-color: $theme-color;
+        background:transparent;
+        // background-color: $theme-color;
         color:#fff;
         z-index:3;
         .home-collapse-nav{
@@ -239,9 +240,10 @@ $theme-color:#658db5;
         margin-top:400px;
         z-index:2;
         background:#eee;
-        // min-height:600px;
         .home-container{
             flex:5;
+            display:flex;
+            flex-wrap: wrap;
         }
         .home-aside-nav{
             margin-left:10px;
@@ -249,12 +251,26 @@ $theme-color:#658db5;
             flex-direction: column;
             flex:1;
             .home-aside{
-                flex:1;            
+                flex:1;
+                display:flex;
+                flex-direction: row;
+                flex-wrap: wrap;            
                 background-color: #fff;
                 h3{
+                    width:100%;
                     background-color:$theme-color;
                     color:#fff;
                     padding:7px 0;
+                }
+                .articlebar-box{
+                    width:270px;
+                    height:240px;
+                    border-bottom:1px solid #ddd;
+                    .articlebar-container{
+                        .articlebar-body,.articlebar-footer{
+                            display:none;
+                        }
+                    }
                 }       
             }
             .home-aside:nth-child(2){

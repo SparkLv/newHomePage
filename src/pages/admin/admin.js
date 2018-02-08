@@ -34,11 +34,15 @@ $(function () {
         }
         $previewBox.html(marked($writeBox.val()));
         hljs.highlightCode();
-    });
+    })
     let previewScroll = function () {
         $writeBox.scrollTop($previewBox.scrollTop());
     }
+    let writeScroll = function () {
+        $previewBox.scrollTop($writeBox.scrollTop());
+    }
     $previewBox.on('scroll', previewScroll);
+    $writeBox.on('click', writeScroll);
     //获取所有tag
     $.ajax({
         url: 'http://sparklv.cn/php/blog_all_tag.php',

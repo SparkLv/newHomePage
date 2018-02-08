@@ -3,8 +3,9 @@ import Tags from '../../components/tags/tags'
 class Box {
     dealDesc(text) {
         //分辨率1920下，三行字288个长度
-        let maxWidth = 165;
-        let maxNum = ($(window).width() / 1920) * maxWidth;
+        let maxWidth = 90;
+        // let maxNum = ($(window).width() / 1920) * maxWidth;
+        let maxNum = 90;
         if (text.length > maxNum) {
             text = text.slice(0, maxNum);
             text = text + '...';
@@ -32,10 +33,8 @@ class Box {
                 <div class='articlebar-body'>
                     <p>${data.desc}</p>
                 </div>
-                <div class='articlebar-date'>
-                    <span>最后编辑于${data.date}</span>
-                </div>
                 <div class='articlebar-footer'>
+                    <span>最后编辑于${data.date}</span>
                 </div>
             </div>
         </div>

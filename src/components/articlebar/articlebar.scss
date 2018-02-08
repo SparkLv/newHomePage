@@ -1,14 +1,12 @@
 .articlebar-box{
     display:flex;
+    width:370px;
+    height:400px;
+    margin:15px;
     position: relative;
-    flex-direction: row;
+    flex-direction: column;
     text-align: left;
-    width:95%;
-    margin-left:2%;
-    margin-top:10px;
     padding:10px;
-    border-bottom:0.5px solid #eee;
-    border-right:0.5px solid #eee;
     background-color: #fff;
     .articlebar-imgbox{
         flex:1;
@@ -19,13 +17,18 @@
     }
     .articlebar-container{
         flex:5;
-        margin-left:10px;
+        padding:0 5px;
         position: relative;
         .articlebar-header{
             a{
+                display:inline-block;
+                width:100%;
                 color:#658db5;
                 font-weight:800;
-                font-size:1.7rem;
+                font-size:1.5rem;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
             }
             a:hover{
                 color:#333;
@@ -33,18 +36,17 @@
         }        
         .articlebar-body{
             overflow:hidden;
+            font-size:0.9rem
         }
-        .articlebar-date{
+        .articlebar-footer{
+            display: flex;
+            flex-direction: row-reverse; 
+            justify-content: space-between;
             border-top:0.5px solid #eee;
             border-bottom:0.5px solid #eee;            
             font-size:14px;
             padding:5px 0;
-            color:#333;
-            text-align: right;            
-        }
-        .articlebar-footer{
-            margin-top:10px;
-            width:100%;
+            color:#333; 
         }
     }
 }
