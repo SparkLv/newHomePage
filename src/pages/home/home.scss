@@ -1,16 +1,26 @@
 $theme-color:#658db5;
+$theme-color2:#303B4E;
 
 .home-box{
     display:flex;
     flex-direction: column;
     text-align: center;
     min-height:100vh;
+    .home-bg-title{
+        position: absolute;
+        top:200px;
+        width:749px;
+        height:56px;
+        z-index:3;
+        left:50%;
+        transform: translateX(-50%);
+    }
     .home-bg{
         display:flex;
         flex-direction: row;
+        justify-content: center;
         position: fixed;
         overflow:hidden;
-        // top:50px;
         height:500px;
         width:100vw;
         z-index:1;
@@ -104,6 +114,14 @@ $theme-color:#658db5;
         // background-color: $theme-color;
         color:#fff;
         z-index:3;
+        .home-header-slide-bg{
+            position: absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:50px;
+            background-color:transparent;
+        }
         .home-collapse-nav{
             width:30px;
             height:50px;
@@ -210,6 +228,7 @@ $theme-color:#658db5;
         }
         .home-social-nav{
             margin-right:50px;
+            z-index:5;
             .icon{
                 display:inline-block;                
                 font-size:30px;
@@ -237,7 +256,7 @@ $theme-color:#658db5;
         display:flex;
         flex-direction: row;
         padding:0.5rem 1rem;
-        margin-top:400px;
+        margin-top:500px;
         z-index:2;
         background:#eee;
         .home-container{
@@ -265,6 +284,7 @@ $theme-color:#658db5;
                 .articlebar-box{
                     width:270px;
                     height:240px;
+                    overflow:hidden;
                     border-bottom:1px solid #ddd;
                     .articlebar-container{
                         .articlebar-body,.articlebar-footer{
@@ -284,7 +304,7 @@ $theme-color:#658db5;
         color:#fff;
         padding:20px 0;
         z-index:2;
-        background-color: $theme-color;
+        background-color: $theme-color2;
         text-align: left;
         @mixin footer-padding{
             padding:0 15px;

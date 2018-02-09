@@ -1,24 +1,20 @@
 .articlebar-box{
     display:flex;
     width:370px;
-    height:400px;
+    height:420px;
     margin:15px;
-    position: relative;
+    border-radius: 15px;
     flex-direction: column;
     text-align: left;
-    padding:10px;
     background-color: #fff;
     .articlebar-imgbox{
-        flex:1;
-        position: relative;
-        .articlebar-img{
-            width:100%;
-        }
+        background-color:#fff;
+        width:370px;
+        height:180px;
+        border-radius: 15px 15px 0 0;
     }
     .articlebar-container{
-        flex:5;
-        padding:0 5px;
-        position: relative;
+        padding:5px 10px;
         .articlebar-header{
             a{
                 display:inline-block;
@@ -33,10 +29,20 @@
             a:hover{
                 color:#333;
             }
+            .article-title-detail{
+                margin:5px auto;
+                color:#989ea0;
+                font-weight: 600;
+                font-size: 14px;
+                text-transform: uppercase;
+            }
         }        
         .articlebar-body{
             overflow:hidden;
-            font-size:0.9rem
+            font-size:14px;
+            font-weight:500;
+            color:#333;
+            height:130px;
         }
         .articlebar-footer{
             display: flex;

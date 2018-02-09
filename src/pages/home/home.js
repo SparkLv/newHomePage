@@ -1,5 +1,6 @@
 import '../../common.scss'
 import './home.scss'
+import 'animate.css/animate.min.css'
 import ArticleBar from '../../components/articlebar/articlebar'
 
 $(function () {
@@ -12,10 +13,16 @@ $(function () {
     const $homeNavbarNav = $('.home-navbar-nav').eq(0);
     const $clear = $('.icon-clear').eq(0);
     const $bgImg = $('.home-bg').eq(0);
+    const $homeHeaderSlideBg = $('.home-header-slide-bg').eq(0);
     $(window).scroll((e) => {
         const top = $(window).scrollTop();
         const opacity = 1 - (top / 800);
         $bgImg.css('opacity', opacity);
+        if ($(window).scrollTop() > 100) {
+            $homeHeaderSlideBg.css('background', '#658db5').removeClass('slideOutRight').addClass('slideInRight');
+        } else {
+            $homeHeaderSlideBg.removeClass('slideInRight').addClass('slideOutRight');
+        }
     })
     $(window).click((e) => {
         if (e.target.className !== 'home-nav-search' && e.target.className !== 'icon iconfont icon-search') {
@@ -83,10 +90,12 @@ $(function () {
                             }
                         })
                         item.date = item.update_time;
-                        item.url = '/article.html?id=' + item.id;
+                        let filterJpg = /(.+)\.jpg/g;
+                        let imgUrl2 = item.imgUrl.split('.jpg')[0] + '_d.jpg';
+                        item.url = `/article.html?id=${item.id}&bgimg=${encodeURIComponent(imgUrl2)}`;
                         item.imgDesc = item.title;
                         test.insert(item, $homeContainer);
-                        test.insert(item,$homeAside)
+                        test.insert(item, $homeAside)
                     });
                 },
                 error: (error) => {

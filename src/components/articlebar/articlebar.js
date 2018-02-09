@@ -3,9 +3,9 @@ import Tags from '../../components/tags/tags'
 class Box {
     dealDesc(text) {
         //分辨率1920下，三行字288个长度
-        let maxWidth = 90;
+        let maxWidth = 150;
         // let maxNum = ($(window).width() / 1920) * maxWidth;
-        let maxNum = 90;
+        let maxNum = 150;
         if (text.length > maxNum) {
             text = text.slice(0, maxNum);
             text = text + '...';
@@ -23,18 +23,21 @@ class Box {
         data.desc = this.dealDesc(data.desc);
         const $box = $(`
         <div class='articlebar-box'>
-            <div class='articlebar-imgbox'>
-                <img class='articlebar-img' src=${data.imgUrl} alt=${data.imgDesc}/>
+            <div class='articlebar-imgbox' style='background:url(${data.imgUrl}) center center'>
             </div>
             <div class='articlebar-container'>
                 <div class='articlebar-header'>
                     <a href=${data.url}>${data.title}</a>
+                    <div class="article-title-detail">
+                        <span class="article-author">${data.author}</span>
+                        <span>|</span>
+                        <span class="article-edit-date">${data.date}</span>
+                    </div>
                 </div>
                 <div class='articlebar-body'>
                     <p>${data.desc}</p>
                 </div>
                 <div class='articlebar-footer'>
-                    <span>最后编辑于${data.date}</span>
                 </div>
             </div>
         </div>
