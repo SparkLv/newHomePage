@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?8f1f8fd850f593984878f8102b1a1a29";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+
+<body>
+    <div class="admin-box">
+        <div class="admin-title">
+            <h2>新建文章</h2>
+            <a href="/admin.html">
+                <i class="icon iconfont icon-home"></i>
+            </a>
+        </div>
+        <div class="admin-body">
+            <div class="admin-title-bar">
+                <label>
+                    标题：
+                    <input id="blog-title" type="text">
+                </label>
+                <button class="btn btn-primary title-submit-btn">
+                    上传
+                </button>
+            </div>
+            <div class="admin-tool-bar">
+                <button class="btn btn-primary img-input-btn">
+                    添加图片
+                    <input id="img-input" type="file" accept="image/*">
+                </button>
+                <button class="btn btn-primary img-t-input-btn">
+                    添加缩略图
+                    <input id="img-t-input" type="file" accept="image/*">
+                </button>
+                <button class="btn btn-primary img-d-input-btn">
+                    添加背景图
+                    <input id="img-d-input" type="file" accept="image/*">
+                </button>
+            </div>
+            <div class="essay-box">
+                <textarea class="write-box" spellcheck="false"></textarea>
+                <div class="admin-toggle-bar">
+                    <span class="toggle-sign">></span>
+                </div>
+                <section class="preview-box"></section>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

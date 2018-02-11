@@ -11,6 +11,8 @@ module.exports = {
         library: './src/pages/library/library.js',
         others: './src/pages/others/others.js',
         admin: './src/pages/admin/admin.js',
+        edit: './src/pages/admin/edit/edit.js',
+        create: './src/pages/admin/create/create.js',
         librarys: ['jquery']
     },
     module: {
@@ -101,6 +103,22 @@ module.exports = {
             favicon: __dirname + "/favicon.ico",
             title: "spark's blog",
             chunks: ['common', 'librarys', 'admin']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'create.html',
+            template: __dirname + "/src/pages/admin/create/create.html",
+            inject: "body",
+            favicon: __dirname + "/favicon.ico",
+            title: "spark's blog",
+            chunks: ['common', 'librarys', 'create']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'edit.html',
+            template: __dirname + "/src/pages/admin/edit/edit.html",
+            inject: "body",
+            favicon: __dirname + "/favicon.ico",
+            title: "spark's blog",
+            chunks: ['common', 'librarys', 'edit']
         })
     ]
 }

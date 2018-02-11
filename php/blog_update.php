@@ -7,13 +7,9 @@ $username = "webuser";
 $password = "za123123";
 $dbname = "webuser";
 
+$id = $_POST['id'];
 $title=$_POST['title'];
-$author=$_POST['author'];
 $content=$_POST['content'];
-$descript=$_POST['desc'];
-$imgurl=$_POST['imgurl'];
-$tags=$_POST['tags'];
-$create_time=$_POST['create_time'];
 $update_time=$_POST['update_time'];
 $conn = mysql_connect($servername,$username,$password);
 
@@ -24,7 +20,7 @@ if(!$conn){
     die("连接失败：".mysql_error());
 }
 
-$sql = "INSERT INTO blog_essay (title,author,description,imgurl,tags,content,create_time,update_time) VALUES ( '".$title."', '".$author."','".$descript."','".$imgurl."','".$tags."', '".$content."', '".$create_time."','".$update_time."' )";
+$sql = "UPDATE blog_essay SET title = '".$title."',content = '".$content."',update_time = '".$update_time."' WHERE id = ".$id;
 
 mysql_select_db($dbname);
 
@@ -37,5 +33,5 @@ else{
     echo json_encode(array("desc"=>"Entered data successfully"));
 }
 
-mysql_close($conn)
+mysql_close($conn);
 ?>

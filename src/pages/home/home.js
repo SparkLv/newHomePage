@@ -64,6 +64,7 @@ $(function () {
         method: 'get',
         success: (data) => {
             let tagsToColor = {};
+            let index = 0;
             data.forEach((item) => {
                 tagsToColor[item.name] = { id: item.id, color: item.color };
             })
@@ -71,11 +72,10 @@ $(function () {
                 url: 'http://sparklv.cn/php/blog_read.php',
                 method: 'get',
                 success: (data) => {
-                    let data1 = JSON.parse(data);
                     let test = new ArticleBar();
-                    data1.forEach((item) => {
+                    data.forEach((item) => {
                         if (item.imgurl) {
-                            item.imgUrl = imgurl
+                            item.imgUrl = item.imgurl
                         }
                         else {
                             item.imgUrl = 'http://sparklv.cn/photo/articleimg.jpg';
@@ -95,7 +95,10 @@ $(function () {
                         item.url = `/article.html?id=${item.id}&bgimg=${encodeURIComponent(imgUrl2)}`;
                         item.imgDesc = item.title;
                         test.insert(item, $homeContainer);
-                        test.insert(item, $homeAside)
+                        if (index < 3) {
+                            test.insert(item, $homeAside);
+                        }
+                        index++;
                     });
                 },
                 error: (error) => {
