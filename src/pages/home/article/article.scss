@@ -1,14 +1,52 @@
 h1{
-    font-size: 2em;
-}
-
-#essay-content{
-    margin-left:17%;
-    width:66%;
-    background-color:#fff;
-    padding:20px;
+    font-size:40px !important;
 }
 
 .article-box{
-    background-color:#eee;
+    background-color:#fff;
+    .article-progress{
+        position:fixed;
+        display:none;
+        top:0;
+        left:0;
+        right:0;
+        width:800px;
+        height:50px;
+        margin:0 auto;
+        text-align: center;
+        font-weight: 600;
+        font-size:30px;
+        color:#505050;
+        line-height:50px;
+        background:transparent;
+        z-index:100;
+        span{
+            z-index:100;
+        }
+        .article-progress-active{
+            position: absolute;
+            top:0;
+            left:0;
+            height:50px;
+            background-color:rgba(202,202,202,0.5);
+            z-index:-1;
+        }
+    }
+    .article-content-box{
+        display:flex;
+        margin:0 auto;
+        width:1200px;
+        #essay-catalog{
+            flex:1;
+        }
+        #essay-content{
+            flex:6;
+            padding:20px;
+        }
+    }
+}
+
+.article-title-bg{
+    width:100%;
+    height:400px;
 }

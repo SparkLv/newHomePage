@@ -8,13 +8,31 @@
     <title>
         <%= htmlWebpackPlugin.options.title %>
     </title>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?8f1f8fd850f593984878f8102b1a1a29";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 
 <body>
     <article class="article-box">
-        <nav id="essay-catalog"></nav>
-        <section id="essay-content"></section>
-        <aside id="essay-comment"></aside>
+        <div class="article-title-bg"></div>
+        <div class="article-progress">
+            <span></span>
+            <div class="article-progress-active"></div>
+        </div>
+        <section class="article-content-box">
+            <nav id="essay-catalog">
+                <h2>一些内容</h2>
+            </nav>
+            <section id="essay-content"></section>
+            <!-- <aside id="essay-comment"></aside> -->
+        </section>
     </article>
 </body>
 

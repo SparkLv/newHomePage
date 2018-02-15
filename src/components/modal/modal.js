@@ -15,13 +15,26 @@ class Box {
         this.mask.remove();
         this.box.remove();
     }
-    bindEvent(confirmFun) {
-        this.mask.on('click', this.removeModal.bind(this));
-        this.box.find('.modal-icon-clear').eq(0).on('click', this.removeModal.bind(this));
-        this.box.find('.modal-cancel-btn').eq(0).on('click', this.removeModal.bind(this));
+    bindEvent(confirmFun, cancelFun, isMaskCancel) {
+        if (isMaskCancel) {
+            this.mask.on('click', this.removeModal.bind(this));
+            this.box.find('.modal-icon-clear').eq(0).on('click', this.removeModal.bind(this));
+        }
+        this.box.find('.modal-cancel-btn').eq(0).on('click', cancelFun);
         this.box.find('.modal-confirm-btn').eq(0).on('click', confirmFun);
     }
-    make({ title = '标题', body = '<span>内容</span>', size = 'normal', confirm = () => { } } = {}) {
+    make({
+        title = '标题',
+        body = '<span>内容</span>',
+        size = 'normal',
+        confirmText = '确定',
+        confirm = () => { },
+        cancelText = '取消',
+        cancel = () => {
+            this.removeModal()
+        },
+        isMaskCancel = true
+         } = {}) {
         this.addMask();
         this.box = $("<div class='modal-box'></div>")
         this.modal = $(`
@@ -32,8 +45,8 @@ class Box {
                 </div>
                 <div class='modal-body'></div>
                 <div class='modal-footer'>
-                    <button class='btn btn-primary modal-confirm-btn'>确定</button>
-                    <button class='btn modal-cancel-btn'>取消</button>                    
+                    <button class='btn btn-primary modal-confirm-btn'>${confirmText}</button>
+                    <button class='btn modal-cancel-btn'>${cancelText}</button>                    
                 </div>
             </div>
         `);
@@ -41,7 +54,7 @@ class Box {
         this.box.append(this.mask);
         this.box.append(this.modal);
         $('body').append(this.box);
-        this.bindEvent(confirm);
+        this.bindEvent(confirm, cancel, isMaskCancel);
     }
 }
 
