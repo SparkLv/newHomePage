@@ -58,7 +58,7 @@ $(function () {
                             const $children = $(`<li class='edit-select-item'>
                                 <a class='edit-select-link' href='/edit.html?${item.id}'>
                                     <span style='float:left'>${item.title}</span>
-                                    <span style='float:right'>${item.update_time}</span>
+                                    <span style='float:right'>${item.date}</span>
                                 </a>
                             </li>`);
                             $('#modify-list').append($children);
