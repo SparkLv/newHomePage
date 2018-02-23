@@ -160,7 +160,7 @@ $(function () {
                             });
                         }
                         else {
-                            $homeContainer.append('<h3 style="margin-top:50px;margin-left:20px;">暂无文章！</h3>');
+                            $homeContainer.append('<h3 style="margin-top:50px;">暂无文章！</h3>');
                         }
                         $homeContentNavGroup.html('');
                         $homeContentNavGroup.append(`<li><a href="/home.html">全部文章</a></li>`);

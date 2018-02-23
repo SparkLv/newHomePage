@@ -38,6 +38,10 @@ h1{
         width:1200px;
         #essay-catalog{
             flex:1;
+            padding:20px;
+            .back-btn{
+                width:150px;
+            }
         }
         #essay-content{
             flex:6;

@@ -278,11 +278,9 @@ $theme-color2:#303B4E;
                 cursor: pointer;
                 transition:all 0.5s;
                 &:nth-child(2n+1):hover{
-                    // color:#333;
                     transform: rotate(60deg)
                 }
                 &:nth-child(2n):hover{
-                    // color:#333;
                     transform: rotate(-60deg)
                 }                  
             }
@@ -296,13 +294,13 @@ $theme-color2:#303B4E;
     .home-body{
         display:flex;
         flex-direction: column;
-        padding:0.5rem 1rem;
+        padding:10px 20px;
         margin-top:500px;
         z-index:2;
         background:#eee;
         .home-content-nav{
             text-align:left;
-            padding-left:20px;
+            padding-left:30px;
             .home-content-nav-group{
                 li{
                     height:30px;
@@ -327,6 +325,7 @@ $theme-color2:#303B4E;
                 flex:7;
                 display:flex;
                 flex-wrap: wrap;
+                justify-content: center;
             }
             .home-aside-nav{
                 margin-left:10px;

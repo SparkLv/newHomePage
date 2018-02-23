@@ -17,8 +17,14 @@ $(function () {
     let $articleTitleBg = $('.article-title-bg').eq(0);
     let $articleProgress = $('.article-progress').eq(0);
     let $articleProgressActive = $('.article-progress-active').eq(0);
+    let $backBtn = $('.back-btn').eq(0);
     let params = location.search.split('?')[1].split('&');
     let paramObj = {};
+
+    $backBtn.click(() => {
+        window.history.go(-1);
+    })
+
     params.forEach((item) => {
         let arr = item.split('=');
         paramObj[arr[0]] = arr[1];
@@ -35,7 +41,7 @@ $(function () {
         $(window).on('scroll', () => {
             if ($(window).scrollTop() > $articleTitleBg.height()) {
                 let percent = Math.floor(100 * ($(window).scrollTop()) / windowToBottom);
-                if(percent > 100){
+                if (percent > 100) {
                     percent = 100;
                 }
                 $articleProgress.css('display', 'block').find('span').eq(0).text(percent + '% READ')
