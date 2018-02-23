@@ -15,7 +15,7 @@ class Box {
     makeTags(arr) {
         let tag = new Tags();
         tag.bindTagClick((item) => {
-            alert(item);
+            location.hash = JSON.parse(item).name;
         })
         return tag.addTags(arr);
     }

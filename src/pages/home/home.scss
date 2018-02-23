@@ -54,51 +54,6 @@ $theme-color2:#303B4E;
                 }
             }
         }
-        .it-box{
-            background-color:rgba(221, 165, 10, 0.2);
-            &:hover{
-                background-color:rgba(221, 165, 10, 0.8);
-                &{
-                    align-items: flex-start;
-                }
-                .middle-nav-box{
-                    display:block;
-                }
-                h2{
-                    display:none;
-                }
-            } 
-        }
-        .book-box{
-            background-color: rgba(255,255,255,0.2);
-            &:hover{
-                background-color: rgba(255,255,255,0.8);
-                &{
-                    align-items: flex-start;
-                }
-                .middle-nav-box{
-                    display:block;
-                }
-                h2{
-                    display:none;
-                }
-            }
-        }
-        .essay-box{
-            background-color:rgba(9, 226, 143,0.2);
-            &:hover{
-                background-color:rgba(9, 226, 143, 0.8);
-                &{
-                    align-items: flex-start;
-                }
-                .middle-nav-box{
-                    display:block;
-                }
-                h2{
-                    display:none;
-                }              
-            }
-        }
     }
     .home-header{
         display:flex;
@@ -111,7 +66,6 @@ $theme-color2:#303B4E;
         height:30px;
         padding:10px 0;
         background:transparent;
-        // background-color: $theme-color;
         color:#fff;
         z-index:3;
         .home-header-slide-bg{
@@ -162,6 +116,30 @@ $theme-color2:#303B4E;
                         outline: none;
                     }
                 }
+                .search-downList{
+                    display: none;
+                    position: absolute;
+                    top:50px;
+                    overflow: auto;
+                    background-color: #333;
+                    width:300px;
+                    text-align: left;
+                    li{
+                        padding:0;                        
+                        a{
+                            display:inline-block;
+                            width:calc(100% - 20px);
+                            height:50px;
+                            line-height: 50px;
+                            padding:0 10px;
+                            color:#fff;
+                            &:hover{
+                                background-color: #303B4E;
+                            }
+                            &:active{color:#fff;}
+                        }
+                    }
+                }
                 .icon-clear{
                     visibility: hidden;
                     position:absolute;
@@ -169,7 +147,7 @@ $theme-color2:#303B4E;
                     z-index:2;
                     cursor: pointer;
                     line-height:50px;
-                    color:#333;
+                    color:#fff;
                 }
                 .icon-search{
                     cursor: pointer;
@@ -206,6 +184,18 @@ $theme-color2:#303B4E;
                         display:block;
                     }
                 }
+                &>li:nth-child(2){
+                    position: relative;
+                    &:hover .home-book-catelog{
+                        display:block;
+                    }
+                }
+                &>li:nth-child(3){
+                    position: relative;
+                    &:hover .home-essay-catelog{
+                        display:block;
+                    }
+                }
                 .home-it-catelog{
                     display:none;
                     position: absolute;
@@ -213,14 +203,65 @@ $theme-color2:#303B4E;
                     top:50px;
                     width:315px;
                     background-color:#333;
-                    &>li{
-                        width:100px;
-                        float:left;
-                        padding:2px;
-                        border:0.5px solid #3a3a3a;
-                        &:hover{
-                            color:#333;
-                            background-color: #ccc;
+                    text-align: left;
+                    padding:20px;
+                    ul{
+                        font-size:18px;
+                        li{
+                            display:inline-block;
+                            padding:0 10px;
+                            font-size:16px;
+                            &:hover{
+                                color:#333;
+                                background-color: #ccc;
+                                border:0.5px solid #3a3a3a;
+                            }
+                        }
+                    }
+                }
+                .home-book-catelog{
+                    display:none;
+                    position: absolute;
+                    left:-90px;
+                    top:50px;
+                    width:315px;
+                    background-color:#333;
+                    text-align: left;
+                    padding:20px;
+                    ul{
+                        font-size:18px;
+                        li{
+                            display:inline-block;
+                            padding:0 10px;
+                            font-size:16px;
+                            &:hover{
+                                color:#333;
+                                background-color: #ccc;
+                                border:0.5px solid #3a3a3a;
+                            }
+                        }
+                    }
+                }
+                .home-essay-catelog{
+                    display:none;
+                    position: absolute;
+                    left:-180px;
+                    top:50px;
+                    width:315px;
+                    background-color:#333;
+                    text-align: left;
+                    padding:20px;
+                    ul{
+                        font-size:18px;
+                        li{
+                            display:inline-block;
+                            padding:0 10px;
+                            font-size:16px;
+                            &:hover{
+                                color:#333;
+                                background-color: #ccc;
+                                border:0.5px solid #3a3a3a;
+                            }
                         }
                     }
                 }
@@ -254,60 +295,83 @@ $theme-color2:#303B4E;
     }
     .home-body{
         display:flex;
-        flex-direction: row;
+        flex-direction: column;
         padding:0.5rem 1rem;
         margin-top:500px;
         z-index:2;
         background:#eee;
-        .home-container{
-            flex:7;
-            display:flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .home-aside-nav{
-            margin-left:10px;
-            display:flex;
-            flex-direction: column;
-            flex:1;
-            .home-aside{
-                flex:1;
-                display:flex;
-                flex-direction: row;
-                flex-wrap: wrap;            
-                background-color: #fff;
-                h3{
-                    width:100%;
-                    background-color:$theme-color;
-                    color:#fff;
-                    padding:7px 0;
+        .home-content-nav{
+            text-align:left;
+            padding-left:20px;
+            .home-content-nav-group{
+                li{
+                    height:30px;
+                    line-height:30px;
+                    font-size:18px;
+                    padding:0 5px;
+                    float: left;
+                    a{
+                        color:#333;
+                    }
                 }
-                .articlebar-box{
-                    width:200px;
-                    height:240px;
-                    overflow:hidden;
-                    border-bottom:1px solid #ddd;
-                    .articlebar-imgbox{
-                        background-color:#fff;
+                li:nth-child(2n+1){
+                    background: #ddd;
+                    border-radius: 4px;
+                }
+            }
+        }
+        .home-content-box{
+            display: flex;
+            direction: row;
+            .home-container{
+                flex:7;
+                display:flex;
+                flex-wrap: wrap;
+            }
+            .home-aside-nav{
+                margin-left:10px;
+                display:flex;
+                flex-direction: column;
+                flex:1;
+                .home-aside{
+                    flex:1;
+                    display:flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;            
+                    background-color: #fff;
+                    h3{
+                        width:100%;
+                        background-color:$theme-color;
+                        color:#fff;
+                        padding:7px 0;
+                    }
+                    .articlebar-box{
                         width:200px;
-                        height:180px;
-                        border-radius: 15px 15px 0 0;
-                    }
-                    .articlebar-container{
-                        .articlebar-header{
-                            a{
-                                font-size:1rem;
-                            }
-                        } 
-                        .articlebar-body,.articlebar-footer{
-                            display:none;
+                        height:240px;
+                        overflow:hidden;
+                        border-bottom:1px solid #ddd;
+                        .articlebar-imgbox{
+                            background-color:#fff;
+                            width:200px;
+                            height:180px;
+                            border-radius: 15px 15px 0 0;
                         }
-                    }
-                }       
-            }
-            .home-aside:nth-child(2){
-                margin-top:10px;
-            }
+                        .articlebar-container{
+                            .articlebar-header{
+                                a{
+                                    font-size:1rem;
+                                }
+                            } 
+                            .articlebar-body,.articlebar-footer{
+                                display:none;
+                            }
+                        }
+                    }       
+                }
+                .home-aside:nth-child(2){
+                    margin-top:10px;
+                }
+            }   
         }
     }
     .home-footer{

@@ -23,15 +23,6 @@
 <body>
     <div class="home-box">
         <div class='home-bg'>
-            <!-- <div class='home-bg-box it-box'>
-                <h2>IT</h2>
-            </div>
-            <div class='home-bg-box book-box'>
-                <h2>BOOK</h2>
-            </div>
-            <div class='home-bg-box essay-box'>
-                <h2>ESSAY</h2>
-            </div> -->
         </div>
         <img class="home-bg-title" src="http://sparklv.cn/photo/home-bg-title.png" alt="home-bg-title">
         <header class="home-header">
@@ -49,33 +40,27 @@
                             <span>IT</span>
                         </span>
                         <ul class="home-it-catelog">
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>JS</li>
-                            <li>ES6</li>
-                            <li>jquery</li>
-                            <li>React</li>
-                            <li>RN</li>
-                            <li>Vue</li>
-                            <li>Webpack</li>
-                            <li>Sass</li>
-                            <li>PHP</li>
-                            <li>HTTP</li>
                         </ul>
                     </li>
                     <li>
                         <i class="icon iconfont icon-book"></i>
                         <span>Book</span>
+                        <ul class="home-book-catelog">
+                        </ul>
                     </li>
                     <li>
                         <i class="icon iconfont icon-wenzhang-copy"></i>
                         <span>Essay</span>
+                        <ul class="home-essay-catelog">
+                        </ul>
                     </li>
                 </ul>
                 <div class="home-search-box">
                     <i class="icon iconfont icon-search"></i>
                     <i class="icon iconfont icon-clear"></i>
-                    <input class="home-nav-search" placeholder="Search anything" type="text">
+                    <input class="home-nav-search" placeholder="Search title" type="text">
+                    <ul class="search-downList">
+                    </ul>
                 </div>
             </nav>
             <div class="home-social-nav">
@@ -90,15 +75,20 @@
             </div>
         </header>
         <article class="home-body">
-            <section class="home-container"></section>
-            <nav class="home-aside-nav">
-                <aside class="home-aside">
-                    <h3>推荐文章</h3>
-                </aside>
-                <!-- <aside class="home-aside">
-                    <h3>一些其他的东西</h3>
-                </aside> -->
+            <nav class="home-content-nav">
+                <ul class="home-content-nav-group"></ul>
             </nav>
+            <div class="home-content-box">
+                <section class="home-container"></section>
+                <nav class="home-aside-nav">
+                    <aside class="home-aside">
+                        <h3>推荐文章</h3>
+                    </aside>
+                    <!-- <aside class="home-aside">
+                            <h3>一些其他的东西</h3>
+                        </aside> -->
+                </nav>
+            </div>
         </article>
         <footer class="home-footer">
             <div class="home-friendly-link">
