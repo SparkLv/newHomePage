@@ -1,6 +1,10 @@
 $theme-color:#658db5;
 $theme-color2:#303B4E;
 
+body{
+    overflow-x: hidden;
+}
+
 .home-box{
     display:flex;
     flex-direction: column;
@@ -82,6 +86,7 @@ $theme-color2:#303B4E;
             margin-left:20px;
             margin-top:5px;
             display:none;
+            z-index:2;
             cursor: pointer;
             hr{
                 height:1px;
@@ -285,6 +290,67 @@ $theme-color2:#303B4E;
                 }                  
             }
         }
+        .nav-callapse-list{
+            display:none;
+            position: fixed;
+            top:50px;
+            background-color: #303B4E;
+            width:100%;
+            padding:20px;
+            text-align:left;
+            .home-nav-search2{
+                height:25px;
+                padding:2px 5px;
+                background-color: transparent;
+                border:none;
+                border-bottom:1px solid #fff;
+                color:#fff;
+                font-size:16px;
+                width:200px;                 
+                &:focus{
+                    outline: none;
+                }
+            }
+            .icon-search2{
+                cursor: pointer;
+            }
+            .search-downList2{
+                display: none;
+                position: absolute;
+                top:50px;
+                overflow: auto;
+                background-color: #fff;
+                width:300px;
+                text-align: left;
+                li{
+                    padding:0;                        
+                    a{
+                        display:inline-block;
+                        width:calc(100% - 20px);
+                        height:50px;
+                        line-height: 50px;
+                        padding:0 10px;
+                        color:#333;
+                        &:hover{
+                            background-color: #ddd;
+                        }
+                        &:active{color:#fff;}
+                    }
+                }
+            }
+            ul{
+                margin-top:20px;
+                &:after{
+                    display:block;
+                    clear:both;
+                    content:"";
+                }
+                .catalog-item{
+                    float: left;
+                    cursor: pointer;
+                }
+            }
+        }
     }
     .home-img{
         height:270px;
@@ -320,7 +386,7 @@ $theme-color2:#303B4E;
         }
         .home-content-box{
             display: flex;
-            direction: row;
+            flex-direction: row;
             .home-container{
                 flex:7;
                 display:flex;
@@ -331,11 +397,12 @@ $theme-color2:#303B4E;
                 margin-left:10px;
                 display:flex;
                 flex-direction: column;
+                max-height:860px;
                 flex:1;
                 .home-aside{
                     flex:1;
                     display:flex;
-                    flex-direction: row;
+                    flex-direction: column;
                     flex-wrap: wrap;            
                     background-color: #fff;
                     h3{
@@ -388,6 +455,9 @@ $theme-color2:#303B4E;
             }
             li{
                 padding:10px 0;
+                a{
+                    color:#fff;
+                }
             }
         }
         .home-friendly-link{
@@ -416,19 +486,35 @@ $theme-color2:#303B4E;
 @media screen and (max-width:1024px){
     .home-box{
         .home-body{
-            flex-direction: column;
+            .home-content-box{
+                flex-direction: column;
+            }
             .home-aside-nav{
                 margin-top:10px;
+                .home-aside{
+                    flex-direction: row !important;
+                }
             }
         }
     }
 }
 @media screen and (max-width:800px){
     .home-box{
+        .home-bg{
+            height:300px;
+        }
+        .home-bg-title{
+            top:150px;
+            width:325px;
+            height:28px;
+        }
         .home-header{
             .home-collapse-nav{
                 display:block;
             }
+        }
+        .home-body{
+            margin-top:300px;
         }
     }
     .home-navbar{
@@ -439,6 +525,12 @@ $theme-color2:#303B4E;
         .icon{
             margin-left:5px !important;
         }
+    }
+}
+
+@media screen and (max-width:500px){
+    .home-aside-nav{
+        display:none !important;
     }
 }
 

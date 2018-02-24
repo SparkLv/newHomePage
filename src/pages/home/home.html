@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
         <%= htmlWebpackPlugin.options.title %>
@@ -67,9 +67,6 @@
                 <a href="https://github.com/SparkLv" target="_blank">
                     <i class="icon iconfont icon-github"></i>
                 </a>
-                <!-- <a href="https://weibo.com/u/3845909848/home">
-                    <i class="icon iconfont icon-weixin"></i>
-                </a> -->
                 <a href="https://weibo.com/u/3845909848">
                     <i class="icon iconfont icon-weibo"></i>
                 </a>
@@ -77,6 +74,15 @@
                     <i class="icon iconfont icon-home"></i>
                 </a>
             </div>
+            <nav class="nav-callapse-list">
+                <div class="home-search-box">
+                    <input class="home-nav-search2" placeholder="Search title" type="text">
+                    <ul class="search-downList2">
+                    </ul>
+                    <ul class="collapse-nav-group">
+                    </ul>
+                </div>
+            </nav>
         </header>
         <article class="home-body">
             <nav class="home-content-nav">
@@ -88,9 +94,6 @@
                     <aside class="home-aside">
                         <h3>推荐文章</h3>
                     </aside>
-                    <!-- <aside class="home-aside">
-                            <h3>一些其他的东西</h3>
-                        </aside> -->
                 </nav>
             </div>
         </article>
@@ -108,7 +111,9 @@
             <div class="home-fast-nav">
                 <h3>快速导航</h3>
                 <ul>
-                    <li>快速导航1</li>
+                    <li>
+                        <a href="https://developer.mozilla.org/en-US/">MDN</a>
+                    </li>
                     <li>快速导航2</li>
                     <li>快速导航3</li>
                     <li>快速导航4</li>

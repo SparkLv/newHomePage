@@ -10,7 +10,9 @@ $(function () {
     const $homeHeader = $('.home-header').eq(0);
     const $search = $('.icon-search').eq(0);
     const $searchInput = $('.home-nav-search').eq(0);
+    const $searchInput2 = $('.home-nav-search2').eq(0);
     const $searchDownList = $('.search-downList').eq(0);
+    const $searchDownList2 = $('.search-downList2').eq(0);
     const $homeNavbarNav = $('.home-navbar-nav').eq(0);
     const $clear = $('.icon-clear').eq(0);
     const $bgImg = $('.home-bg').eq(0);
@@ -19,6 +21,9 @@ $(function () {
     const $homeBookCatelog = $('.home-book-catelog').eq(0);
     const $homeEssayCatelog = $('.home-essay-catelog').eq(0);
     const $homeContentNavGroup = $('.home-content-nav-group').eq(0);
+    const $collapseNavGroup = $('.collapse-nav-group').eq(0);
+    const $homeCollapseNav = $('.home-collapse-nav').eq(0);
+    const $navCallapseList = $('.nav-callapse-list').eq(0);
 
     /**
      * @desc 搜索框输入事件
@@ -34,6 +39,18 @@ $(function () {
             else {
                 $clear.css('visibility', 'hidden');
                 $searchDownList.css('display', 'none');
+            }
+        })
+    }
+
+    function searchInput2(data) {
+        $searchInput2.on('input', (e) => {
+            if (e.target.value) {
+                $searchDownList2.css('display', 'block');
+                searchResult2(data, e.target.value);
+            }
+            else {
+                $searchDownList2.css('display', 'none');
             }
         })
     }
@@ -58,6 +75,24 @@ $(function () {
         }
         else {
             $searchDownList.append(`<li class='search-downList-item' style="text-align:center"><a href="#">No Result !</a></li>`)
+        }
+    }
+
+    function searchResult2(data, text) {
+        $searchDownList2.html('');
+        let matchReg = new RegExp(text, 'i');
+        let matchArr = data.filter((item) => {
+            return matchReg.test(item.title);
+        })
+        if (matchArr.length) {
+            let matchReg1 = new RegExp(text, 'ig');
+            matchArr.forEach((item) => {
+                let title = item.title.replace(matchReg1, `<span style="color:red">$&</span>`);
+                $searchDownList2.append(`<li class='search-downList-item'><a href="${item.url}">${title}</a></li>`)
+            })
+        }
+        else {
+            $searchDownList2.append(`<li class='search-downList-item' style="text-align:center"><a href="#">No Result !</a></li>`)
         }
     }
 
@@ -106,6 +141,7 @@ $(function () {
                             index++;
                         });
                         searchInput(data);
+                        // searchInput2(data);
                     },
                     error: (error) => {
                         console.log(error)
@@ -225,6 +261,15 @@ $(function () {
         $searchInput.val('').focus()
     })
 
+    $homeCollapseNav.click(() => {
+        if ($navCallapseList.css('display') === 'none') {
+            $navCallapseList.css('display', 'block');
+        }
+        else {
+            $navCallapseList.css('display', 'none');
+        }
+    })
+
     getAllEssay();
     $homeContentNavGroup.html('');
     $homeContentNavGroup.append(`<li><a href="/home.html">全部文章</a></li>`);
@@ -263,7 +308,13 @@ $(function () {
                     let $li = $(`<li class="catalog-item">${item1.name}</li>`);
                     $ul.append($li);
                 });
+                let $ul2 = $(`<ul><h4>${item.name}</h4></ul>`);
+                item.item.forEach((item1) => {
+                    let $li = $(`<li class="catalog-item">${item1.name}</li>`);
+                    $ul2.append($li);
+                });
                 $homeItCatelog.append($ul);
+                $collapseNavGroup.append($ul2);
             })
             $.ajax({
                 url: 'http://sparklv.cn/php/get_book_tags.php',
@@ -294,6 +345,12 @@ $(function () {
                             $ul.append($li);
                         });
                         $homeBookCatelog.append($ul);
+                        let $ul2 = $(`<ul><h4>${item.name}</h4></ul>`);
+                        item.item.forEach((item1) => {
+                            let $li = $(`<li class="catalog-item">${item1.name}</li>`);
+                            $ul2.append($li);
+                        });
+                        $collapseNavGroup.append($ul2);
                     })
                     $.ajax({
                         url: 'http://sparklv.cn/php/get_essay_tags.php',
@@ -324,6 +381,12 @@ $(function () {
                                     $ul.append($li);
                                 });
                                 $homeEssayCatelog.append($ul);
+                                let $ul2 = $(`<ul><h4>${item.name}</h4></ul>`);
+                                item.item.forEach((item1) => {
+                                    let $li = $(`<li class="catalog-item">${item1.name}</li>`);
+                                    $ul2.append($li);
+                                });
+                                $collapseNavGroup.append($ul2);
                             })
                             $('.catalog-item').each((index, item) => {
                                 $(item).on('click', () => {
