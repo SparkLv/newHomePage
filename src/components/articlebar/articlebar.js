@@ -23,7 +23,7 @@ class Box {
         data.desc = this.dealDesc(data.desc);
         const $box = $(`
         <div class='articlebar-box'>
-            <div class='articlebar-imgbox' style='background:url(${data.imgUrl}) center center'>
+            <div class='articlebar-imgbox' style='background:url(${data.imgUrl}) center center/370px 180px'>
             </div>
             <div class='articlebar-container'>
                 <div class='articlebar-header'>

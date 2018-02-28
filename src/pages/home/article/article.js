@@ -29,7 +29,6 @@ $(function () {
         let arr = item.split('=');
         paramObj[arr[0]] = arr[1];
     })
-    $articleTitleBg.css('background', `url(${decodeURIComponent(paramObj.bgimg)}) no-repeat center center/cover`);
     let insertLoading = () => {
         let url = require('../../../assets/loading.gif');
         let $loadingimg = $(`<img src=${url} class='loading-img' alt='loading'>`);
@@ -59,6 +58,7 @@ $(function () {
         data: { id: paramObj.id },
         success: (data) => {
             let data1 = JSON.parse(data);
+            $articleTitleBg.css('background', `url(${data1.imgurl}) no-repeat center center/cover`);
             let content = Base64.decode(data1.content);
             $('#essay-content').html(marked(content));
             hljs.highlightCode();

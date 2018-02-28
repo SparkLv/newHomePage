@@ -124,7 +124,7 @@ $(function () {
         formData.append("img", fileData);
         $.ajax({
             type: "POST", // 上传文件要用POST
-            url: "http://sparklv.cn/php/upload_blog_img.php",
+            url: "http://sparklv.cn/php/upload_markdown_img.php",
             dataType: "json",
             crossDomain: true, // 如果用到跨域，需要后台开启CORS
             processData: false,  // 注意：不要 process data
@@ -133,27 +133,6 @@ $(function () {
             success: function (data) {
                 let img = `![essay_img](${data.url} "img")`;
                 $writeBox.val($writeBox.val() + img);
-            },
-            error: function (error) {
-                console.log(error.responseText);
-            }
-        })
-    })
-    $('#img-d-input').on('change', () => {
-        let formData = new FormData();
-        let fileData = $('#img-d-input').prop('files')[0];
-        formData.append("user", "Spark");
-        formData.append("img", fileData);
-        $.ajax({
-            type: "POST", // 上传文件要用POST
-            url: "http://sparklv.cn/php/upload_blog_img.php",
-            dataType: "json",
-            crossDomain: true, // 如果用到跨域，需要后台开启CORS
-            processData: false,  // 注意：不要 process data
-            contentType: false,  // 注意：不设置 contentType
-            data: formData,
-            success: function (data) {
-                console.log(data.url)
             },
             error: function (error) {
                 console.log(error.responseText);

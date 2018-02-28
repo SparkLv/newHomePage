@@ -158,7 +158,7 @@ $(function () {
         formData.append("img", fileData);
         $.ajax({
             type: "POST", // 上传文件要用POST
-            url: "http://sparklv.cn/php/upload_blog_img.php",
+            url: "http://sparklv.cn/php/upload_markdown_img.php",
             dataType: "json",
             crossDomain: true, // 如果用到跨域，需要后台开启CORS
             processData: false,  // 注意：不要 process data

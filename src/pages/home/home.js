@@ -128,9 +128,9 @@ $(function () {
                                 }
                             })
                             //添加缩略图参数
-                            let filterJpg = /(.+)\.jpg/g;
-                            let imgUrl2 = item.imgUrl.split('.jpg')[0] + '_d.jpg';
-                            item.url = `/article.html?id=${item.id}&bgimg=${encodeURIComponent(imgUrl2)}`;
+                            // let filterJpg = /(.+)\.jpg/g;
+                            // let imgUrl2 = item.imgUrl.split('.jpg')[0] + '_d.jpg';
+                            item.url = `/article.html?id=${item.id}`;
                             item.imgDesc = item.title;
                             //将文章bar插入到主页
                             createBar.insert(item, $homeContainer);
@@ -141,7 +141,7 @@ $(function () {
                             index++;
                         });
                         searchInput(data);
-                        // searchInput2(data);
+                        searchInput2(data);
                     },
                     error: (error) => {
                         console.log(error)
@@ -187,9 +187,9 @@ $(function () {
                                     }
                                 })
                                 //添加缩略图参数
-                                let filterJpg = /(.+)\.jpg/g;
-                                let imgUrl2 = item.imgUrl.split('.jpg')[0] + '_d.jpg';
-                                item.url = `/article.html?id=${item.id}&bgimg=${encodeURIComponent(imgUrl2)}`;
+                                // let filterJpg = /(.+)\.jpg/g;
+                                // let imgUrl2 = item.imgUrl.split('.jpg')[0] + '_d.jpg';
+                                item.url = `/article.html?id=${item.id}`;
                                 item.imgDesc = item.title;
                                 //将文章bar插入到主页
                                 createBar.insert(item, $homeContainer);
@@ -238,7 +238,14 @@ $(function () {
 
     //hash改变事件
     $(window).on('hashchange', (e) => {
-        getFilterEssay();
+        if (decodeURIComponent(location.hash.slice(1))) {
+            getFilterEssay();
+        }
+        else {
+            $homeContentNavGroup.html('');
+            $homeContentNavGroup.append(`<li><a href="/home.html">全部文章</a></li>`);
+            getAllEssay();
+        }
     })
 
     //点击搜索图标事件
